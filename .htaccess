@@ -1,0 +1,31 @@
+# ====================================================================
+# Usanidi wa Apache (.htaccess) - e-Mrejesho
+# ====================================================================
+
+RewriteEngine On
+
+# 1. Zuia kuangalia orodha ya folda (Disable directory listing)
+Options -Indexes
+
+# 2. Zuia upakuaji wa faili nyeti kwa umma (Protect sensitive files)
+<FilesMatch "^(database\.sql|\.cpanel\.yml|\.gitignore|\.env)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# 3. Mipangilio ya PWA na MIME Types
+<IfModule mod_mime.c>
+    AddType application/manifest+json .json
+    AddType application/javascript .js
+</IfModule>
+
+# 4. Routing - Elekeza URL zote zisizo faili au folda halisi kwenye index.php
+# (Inafanya kazi bila hitilafu iwe kwenye Root au Subfolder /e-mrejesho/)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
