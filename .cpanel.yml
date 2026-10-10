@@ -2,7 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/platinum/public_html/e-mrejesho/
-    - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp -R * $DEPLOYPATH
-    - /bin/cp -f .htaccess $DEPLOYPATH 2>/dev/null || true
+    - /bin/cp -Rf . $DEPLOYPATH
 
