@@ -9,11 +9,11 @@ if ($isLocal) {
     $password = "";
     $dbname = "e-mrejesho";
 } else {
-    // Usanidi wa Live cPanel (Badilisha hapa kulingana na MySQL ya cPanel yako)
+    // Usanidi wa Live cPanel
     $host = "localhost";
-    $username = "platinum_emrejesho"; // Jina la mtumiaji wa DB kwenye cPanel
-    $password = "NenosiriLakoHapa";     // Nenosiri la DB kwenye cPanel
-    $dbname   = "platinum_emrejesho"; // Jina la database kwenye cPanel
+    $username = "developer";
+    $password = "seen";
+    $dbname   = "e-mrejesho";
 }
 
 try {
